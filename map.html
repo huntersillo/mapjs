@@ -62,7 +62,7 @@
       var mymap = L.map('mapid').setView(coords , 13);
       //http://a.tile.stamen.com/toner/$%7Bz%7D/$%7Bx%7D/$%7By%7D.png
       L.tileLayer('http://a.tile.stamen.com/toner/{z}/{x}/{y}.png').addTo(mymap);
-      var marker = L.marker(coords).addTo(mymap).bindPopup('<b>here</b><br>I am julio.<br><video preload="auto" autoplay="autoplay" muted="muted" loop="loop" webkit-playsinline=""><source src="http://i.imgur.com/cPEVAV7.mp4" type="video/mp4"></video>').openPopup();
+      var marker = L.marker(coords).addTo(mymap).bindPopup('<b>here</b><br>I am julio.<br><video style="width: 100%" preload="auto" autoplay="autoplay" muted="muted" loop="loop" webkit-playsinline=""><source src="http://i.imgur.com/cPEVAV7.mp4" type="video/mp4"></video>').openPopup();
       L.geoJson(gj).addTo(mymap);
       var circle = L.circle(coords, 100, {
     color: 'grey',
