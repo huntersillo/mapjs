@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+    <style media="screen">
+    body{
+      margin: 0;
+      padding: 0;
+    }
+      #mapid { height: 100vh; }
+    </style>
+  </head>
+  <body>
+
+    <div id="mapid"></div>
+
+    <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+    <script type="text/javascript">
+    var gj = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -122.34261274337769,
+              47.610300515157554
+            ],
+            [
+              -122.32510328292845,
+              47.610604302598496
+            ],
+            [
+              -122.31491088867186,
+              47.58764167941513
+            ],
+            [
+              -122.36005783081055,
+              47.58700489095433
+            ],
+            [
+              -122.35250473022462,
+              47.60697320387603
+            ],
+            [
+              -122.34261274337769,
+              47.610300515157554
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
+    var coords =[47.5989564, -122.33352889999999];
+      var mymap = L.map('mapid').setView(coords , 13);
+      //http://a.tile.stamen.com/toner/$%7Bz%7D/$%7Bx%7D/$%7By%7D.png
+      L.tileLayer('http://a.tile.stamen.com/toner/{z}/{x}/{y}.png').addTo(mymap);
+      var marker = L.marker(coords).addTo(mymap).bindPopup('<b>here</b><br>I am julio.<br><video preload="auto" autoplay="autoplay" muted="muted" loop="loop" webkit-playsinline=""><source src="http://i.imgur.com/cPEVAV7.mp4" type="video/mp4"></video>').openPopup();
+      L.geoJson(gj).addTo(mymap);
+      var circle = L.circle(coords, 100, {
+    color: 'grey',
+    fillColor: 'green',
+    fillOpacity: 0.5
+}).addTo(mymap);
+var popup = L.popup();
+
+function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("Your coords are " + e.latlng.toString())
+        .openOn(mymap);
+}
+
+mymap.on('click', onMapClick);
+
+
+    </script>
+  </body>
+</html>
